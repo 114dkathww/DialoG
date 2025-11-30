@@ -1,0 +1,47 @@
+dialogai.ddns.net {
+    reverse_proxy frontend:80
+
+    handle /api/analyze/* {
+        reverse_proxy ai-server:8000
+    }
+
+    handle /api/chat {
+        reverse_proxy ai-server:8000
+    }
+
+    handle /api/faq {
+        reverse_proxy ai-server:8000
+    }
+
+    handle /ws/* {
+        reverse_proxy ai-server:8000
+    }
+
+    handle /ai/* {
+        reverse_proxy ai-server:8000
+    }
+
+    handle /api/* {
+        reverse_proxy backend:8080 {
+            header_up X-Forwarded-Proto {scheme}
+        }
+    }
+
+    handle /login/* {
+        reverse_proxy backend:8080 {
+            header_up X-Forwarded-Proto {scheme}
+        }
+    }
+
+    handle /oauth2/* {
+        reverse_proxy backend:8080 {
+            header_up X-Forwarded-Proto {scheme}
+        }
+    }
+    
+    handle /auth/* {
+        reverse_proxy backend:8080 {
+            header_up X-Forwarded-Proto {scheme}
+        }
+    }
+}

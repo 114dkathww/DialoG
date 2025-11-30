@@ -1,0 +1,721 @@
+.card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 카드 헤더 */
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.card-link {
+    font-size: 14px;
+    color: #8E44AD;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.card-link:hover {
+    color: #7d3c98;
+}
+
+/* ============================================
+   페이지 헤더 스타일
+   ============================================ */
+
+.page-header {
+    margin-bottom: 16px;
+}
+
+.page-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+.page-header #current-date-display {
+    font-size: 18px;
+    font-weight: 600;
+    color: #8E44AD;
+    margin: 0;
+}
+
+/* ============================================
+   3개 카드 1열 레이아웃
+   ============================================ */
+
+.three-col-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 16px;
+}
+
+.three-col-grid > .card {
+    height: 340px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================
+   To-Do 스타일
+   ============================================ */
+
+/* TODO 카드 내부 레이아웃 */
+.three-col-grid > .card:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+}
+
+.three-col-grid > .card:nth-child(3) .card-header {
+    margin-bottom: 16px;
+    flex-shrink: 0;
+}
+
+/* TODO 리스트 - 남은 공간 정확히 계산 */
+.three-col-grid .todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 2px 8px 2px 0;
+    height: 0;
+    flex-grow: 1;
+}
+
+/* TODO 아이템 */
+.three-col-grid .todo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    flex-shrink: 0;
+    min-height: 42px;
+}
+
+.three-col-grid .todo-item:hover {
+    background: #f9fafb;
+}
+
+.three-col-grid .todo-item.completed .todo-label {
+    text-decoration: line-through;
+    color: #9ca3af;
+}
+
+.three-col-grid .todo-checkbox {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    appearance: none;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.three-col-grid .todo-checkbox:checked {
+    background: #8E44AD;
+    border-color: #8E44AD;
+}
+
+.three-col-grid .todo-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.three-col-grid .todo-label {
+    flex: 1;
+    font-size: 14px;
+    color: #374151;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* ============================================
+   최근 회의 스타일 (홈 전용)
+   ============================================ */
+
+.three-col-grid > .card:first-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.three-col-grid .meeting-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    flex: 1;
+    padding: 2px 0;
+    /* justify-content: center; */
+}
+
+.three-col-grid .meeting-item {
+    padding: 12px;
+    border: 1px solid #f3f4f6;
+    border-radius: 12px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.three-col-grid .meeting-item:hover {
+    background: #f9fafb;
+    border-color: #e5e7eb;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.three-col-grid .meeting-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.three-col-grid .meeting-title {
+    font-weight: 600;
+    color: #111827;
+    font-size: 14px;
+    word-break: break-all; 
+    white-space: normal;
+}
+
+.three-col-grid .meeting-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.three-col-grid .meeting-date {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.three-col-grid .meeting-participants {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+/* ============================================
+   다가오는 일정/마감일 스타일
+   ============================================ */
+
+.three-col-grid > .card:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+}
+
+.deadline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    flex: 1;
+    padding: 2px 0;
+    /* justify-content: center; */
+}
+
+.deadline-item {
+    padding: 12px;
+    border: 1px solid #f3f4f6;
+    border-radius: 12px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.deadline-item:hover {
+    background: #f9fafb;
+    border-color: #e5e7eb;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.deadline-item.urgent {
+    border-color: #fecaca;
+    background: #fef2f2;
+}
+
+.deadline-item.urgent:hover {
+    background: #fee2e2;
+    border-color: #fca5a5;
+}
+
+.deadline-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.deadline-title {
+    font-weight: 600;
+    color: #111827;
+    font-size: 14px;
+}
+
+.deadline-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.deadline-date {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.deadline-badge {
+    padding: 3px 8px;
+    background: #f3e5f5;
+    color: #8E44AD;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.deadline-badge.urgent {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* ============================================
+   레이아웃 간격
+   ============================================ */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.cta-banner {
+    flex-shrink: 0;
+    margin-bottom: 16px;
+    padding: 24px 32px;
+}
+
+.cta-banner h3 {
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.cta-banner p {
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.three-col-grid {
+    flex-shrink: 0;
+}
+
+.page-header {
+    /* flex-shrink: 0; */
+    margin-bottom: 24px;
+}
+
+/* 빈 상태 메시지 스타일 추가 */
+.three-col-grid .meeting-list p,
+.three-col-grid .deadline-list p {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+}
+
+.three-col-grid .meeting-list p:hover,
+.three-col-grid .deadline-list p:hover {
+    background: none;
+    border: none;
+    transform: none;
+    box-shadow: none;
+    cursor: default;
+}
+
+/* 빈 상태 메시지 - hover 효과 제거 */
+.three-col-grid .empty-message {
+    cursor: default;
+    background: transparent !important;
+    border: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* ============================================
+반응형
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .three-col-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .three-col-grid > .card {
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+.modal-overlay {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000; /* 다른 요소들보다 위에 보이도록 높은 값 설정 */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* JS에서 visible 클래스가 추가되면 보이게 됩니다 */
+.modal-overlay.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-container {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+    overflow: hidden;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.visible .modal-container {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #4b5563;
+}
+
+.modal-body {
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 16px;
+    color: #374151;
+    line-height: 1.5;
+}
+
+.modal-footer {
+    padding: 20px 24px;
+    background-color: #f9fafb;
+    border-top: 1px solid #f3f4f6;
+}
+
+.google-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #8E44AD;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.google-btn:hover {
+    background-color: #357abd;
+}
+
+/* 2열 카드 레이아웃 */
+.two-col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+    .two-col-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   관리자 페이지 이동 버튼
+   ============================================ */
+
+.admin-btn-small {
+  height: 34px;
+  padding: 0 14px;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 8px;
+  background: #8E44AD;
+  color: #fff;
+  border: none;
+  transition: background 0.16s;
+}
+.admin-btn-small:hover {
+  background: #7d3c98;
+}
+
+.google-link-banner {
+    position: fixed; /* position이 fixed여야 transform이 올바르게 동작합니다 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #fff8e1;
+    border-bottom: 1px solid #ffecb3;
+    padding: 16px 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    opacity: 0;
+    transform: translateY(-100%); 
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.google-link-banner .banner-actions {
+    display: flex;
+    align-items: center; /* (추가) 세로 중앙 정렬 */
+    gap: 12px;
+}
+
+.google-link-banner.visible {
+    opacity: 1; /* 1. 보이는 상태: 불투명하게 */
+    transform: translateY(0); /* 2. 보이는 상태: 제자리로 */
+}
+
+.google-empty-state {
+    /* * (중요) 부모(.deadline-list, .todo-list)가 
+     * flex: 1 또는 flex-grow: 1을 가지고 있어
+     * 이 컨테이너가 남은 빈 공간을 모두 차지합니다.
+     */
+    height: 100%;
+    
+    /* 내용물(아이콘, 텍스트, 버튼)을 세로로 배치 */
+    display: flex;
+    flex-direction: column;
+
+    /* 내용물을 수직/수평 중앙에 정렬 */
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    text-align: center;
+}
+
+/* 아이콘 스타일 (이모지 사용) */
+.empty-state-icon {
+    font-size: 36px; /* 이모지 아이콘 크기 */
+    margin-bottom: 16px;
+    opacity: 0.8;
+}
+
+/* 안내 텍스트 스타일 */
+.empty-state-text {
+    font-size: 14px;
+    color: #6b7280; /* 너무 진하지 않은 회색 */
+    line-height: 1.6;
+    margin-bottom: 24px;
+    margin-top: 0;
+}
+
+/* 연동 버튼 스타일 */
+.empty-state-button {
+    /* 기존 .admin-btn-small 스타일과 유사하게 맞춤 */
+    height: 34px;
+    padding: 0 14px;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 8px;
+    background: #8E44AD; /* 대시보드 메인 보라색 */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.16s;
+}
+
+.empty-state-button:hover {
+    background: #7d3c98; /* 보라색 hover */
+}
+
+/* ============================================
+   직무 설정 유도 모달 (Job Persona Modal)
+   ============================================ */
+
+.job-modal-overlay {
+    display: none; /* JS에서 flex로 제어됨 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    /* 부드러운 등장을 위한 옵션 (선택사항) */
+    backdrop-filter: blur(2px);
+}
+
+.job-modal-content {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+/* 모달 등장 애니메이션 */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.job-modal-title {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: #111827;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.job-modal-desc {
+    color: #6b7280;
+    margin: 0 0 24px 0;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.job-modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.job-modal-btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* 보라색 메인 버튼 */
+.job-modal-btn.btn-primary {
+    background: #8E44AD;
+    color: white;
+}
+
+.job-modal-btn.btn-primary:hover {
+    background: #7d3c98;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(142, 68, 173, 0.2);
+}
+
+/* 회색 보조 버튼 */
+.job-modal-btn.btn-secondary {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.job-modal-btn.btn-secondary:hover {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.job-modal-footer {
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.job-modal-footer a {
+    color: #9ca3af;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.job-modal-footer a:hover {
+    color: #6b7280;
+}

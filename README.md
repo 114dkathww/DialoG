@@ -85,17 +85,22 @@
 | **성장 (Growth)** | 영속성 전이(Cascade)의 사이드 이펙트를 경계하고, **트랜잭션 범위 내에서 데이터 삭제 순서**를 설계하는 방법을 익힘. |
 
 ## 🗓️ 개발 타임라인 (Dev Process)
+
+> 💡 **8주간의 상세한 개발 과정과 트러블 슈팅 내역은 아래 링크에서 확인하실 수 있습니다.**
+>
+> [**👉 📂 주간 개발 업무 일지 보러가기 (DEV_LOG.md)**](./DEV_LOG.md)
+
 <details>
-<summary>👉 <strong>8주간의 단계별 개발 로그 보기</strong></summary>
+<summary><strong>(요약) 단계별 진행 현황 보기</strong></summary>
 
 * **Phase 1. 기획 및 설계 (09.29 ~ 10.02):** 요구사항 분석, ERD 설계 및 정규화
-* **Phase 2. 보안 시스템 (10.13 ~ 10.21):** Spring Security, JWT, OAuth2 도입 및 XSS 방어(HttpOnly)
+* **Phase 2. 보안 시스템 (10.13 ~ 10.21):** Spring Security, JWT, OAuth2 도입
 * **Phase 3. 외부 연동 (10.22 ~ 10.27):** Google Calendar API 연동 및 토큰 저장소 설계
 * **Phase 4. 안정화 (10.28 ~ 10.31):** JWT Silent Refresh 및 NLP 전처리 학습
 * **Phase 5. 관리자 기능 (11.06 ~ 11.10):** RBAC 권한 분리 및 대시보드 통계 쿼리 최적화
 * **Phase 6. 예외 처리 (11.11 ~ 11.13):** Global Exception Handler 구축 및 UX 개선
 * **Phase 7. 편의성 개선 (11.14 ~ 11.21):** SMTP 비밀번호 재설정 및 온보딩 프로세스
-* **Phase 8. 최종 배포 (11.24):** Docker 환경 변수 격리 및 데이터 정합성 최종 점검
+* **Phase 8. 최종 배포 (11.24 ~ 11.28):** Docker 환경 변수 격리 및 최종 안정화
 
 </details>
 

@@ -29,12 +29,14 @@
 * **진행 기간:** 2025.09.29 ~ 2025.11.24 (약 2개월)
 * **참여 인원:** 5명 (학원 프로젝트 / Full-stack)
 * **담당 역할:**
+    * **Team Lead (PM):**
+        * **Schedule Management:** WBS 기반의 개발 단계(Phase 1~8) 수립 및 일정 관리
+        * **Documentation:** 팀원별 일일 업무일지 취합 및 주간 개발 리포트 발행 (구글 공유시트 관리)
     * **Backend (Core):**
-        * **Security:** Spring Security & OAuth2(Google/Kakao) 기반 인증/인가 시스템 설계 및 구현
-        * **API & Logic:** 구글 캘린더 양방향 동기화, 회의록 생성 및 관리자 통계 시스템(JPQL) 개발
-        * **Stability:** Global Exception Handler 도입 및 SMTP 비밀번호 재설정 기능 구현
-    * **Frontend:**
-        * 인증 관련 UI(로그인/회원가입/비밀번호 찾기) 및 관리자 대시보드(Chart.js) 데이터 연동
+        * **Security:** Spring Security & OAuth2(Google/Kakao) 기반 인증/인가 시스템 설계
+        * **API & Logic:** 구글 캘린더 양방향 동기화, 회의록 생성 및 관리자 통계 시스템 개발
+        * **Stability:** JPA 트랜잭션 제어 및 Global Exception Handler 도입
+    * **DevOps:** Docker Compose 컨테이너 환경 구축 및 환경 변수 격리 전략 수립
 
 ---
 
@@ -74,6 +76,28 @@
 | **문제 (Issue)** | 관리자 대시보드 통계 집계 시, Java `Date` 객체의 Timezone 차이로 날짜가 하루씩 밀리거나 전일 대비 증감률 쿼리가 복잡해지는 문제. |
 | **해결 (Solution)** | `LocalDateTime`의 `atStartOfDay()`를 활용해 정확한 **범위 검색(Range Scan)**을 구현하고, **JPQL로 통계 로직을 최적화**하여 DB 레벨에서 데이터를 산출함. |
 | **성장 (Growth)** | 정확한 데이터 분석을 위한 **Timezone 처리** 전략과, 대용량 데이터 처리를 고려한 **쿼리 최적화**의 효율성을 체득함. |
+
+### 4. 🔗 JPA 연관 관계 삭제 및 무결성 보장 (Database)
+| 구분 | 내용 |
+| :--- | :--- |
+| **문제 (Issue)** | 관리자 기능에서 회의(Meeting) 삭제 시, 연관된 참여자/일정 데이터로 인해 **FK 제약조건 위배(SQL Error 1451)** 발생. |
+| **해결 (Solution)** | 단순 JPA `Cascade` 옵션에 의존하기보다, Service 계층에서 **자식 엔티티(참여자, 캘린더 이벤트)를 명시적으로 선행 삭제**하는 로직을 구현하여 삭제 흐름을 완벽하게 제어함. |
+| **성장 (Growth)** | 영속성 전이(Cascade)의 사이드 이펙트를 경계하고, **트랜잭션 범위 내에서 데이터 삭제 순서**를 설계하는 방법을 익힘. |
+
+## 🗓️ 개발 타임라인 (Dev Process)
+<details>
+<summary>👉 <strong>8주간의 단계별 개발 로그 보기</strong></summary>
+
+* **Phase 1. 기획 및 설계 (09.29 ~ 10.02):** 요구사항 분석, ERD 설계 및 정규화
+* **Phase 2. 보안 시스템 (10.13 ~ 10.21):** Spring Security, JWT, OAuth2 도입 및 XSS 방어(HttpOnly)
+* **Phase 3. 외부 연동 (10.22 ~ 10.27):** Google Calendar API 연동 및 토큰 저장소 설계
+* **Phase 4. 안정화 (10.28 ~ 10.31):** JWT Silent Refresh 및 NLP 전처리 학습
+* **Phase 5. 관리자 기능 (11.06 ~ 11.10):** RBAC 권한 분리 및 대시보드 통계 쿼리 최적화
+* **Phase 6. 예외 처리 (11.11 ~ 11.13):** Global Exception Handler 구축 및 UX 개선
+* **Phase 7. 편의성 개선 (11.14 ~ 11.21):** SMTP 비밀번호 재설정 및 온보딩 프로세스
+* **Phase 8. 최종 배포 (11.24):** Docker 환경 변수 격리 및 데이터 정합성 최종 점검
+
+</details>
 
 ---
 

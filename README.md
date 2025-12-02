@@ -35,7 +35,6 @@
         * **Security:** Spring Security & OAuth2(Google/Kakao) 기반 인증/인가 시스템 설계
         * **API & Logic:** 구글 캘린더 양방향 동기화, 회의록 생성 및 관리자 통계 시스템 개발
         * **Stability:** JPA 트랜잭션 제어 및 Global Exception Handler 도입
-    * **DevOps:** Docker Compose 컨테이너 환경 구축 및 환경 변수 격리 전략 수립
 
 ---
 
